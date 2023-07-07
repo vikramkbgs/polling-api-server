@@ -52,84 +52,63 @@ To get started with the Polling API, follow these steps:
   ```
   npm start
   ```
-
 # Polling API Documentation
-
-The Polling API provides endpoints to create and manage polls.
 
 ## Base URL
 
-The base URL for all API endpoints is: `http://localhost:3000`
+`http://localhost:3000` is the base URL for all API endpoints.
 
 ## Endpoints
 
 ### Create a Question
 
-- Endpoint: `/questions/create`
-- Method: POST
-- Description: Create a new question with options.
-- Request Body:
-  ```json
-  {
-    "title": "Which is your favorite programming language?",
-    "options": [
-      {
-        "text": "JavaScript"
-      },
-      {
-        "text": "Python"
-      }
-    ]
-  }
-- Response:
-- Status: 200 OK
-- Body:
-  ```json
-  {
-  "message": "Question created successfully",
-  "question": {
-    "id": "123",
-    "title": "Which is your favorite programming language?",
-    "options": [
-      {
-        "id": "456",
-        "text": "JavaScript",
-        "votes": 0
-      },
-      {
-        "id": "789",
-        "text": "Python",
-        "votes": 0
-      }
-    ]
-  }
-}
-```
+- **Endpoint:** `/questions/create`
+- **Method:** POST
+- **Description:** Create a new question with options.
+- **Request Body:** JSON object containing the question title and options.
+- **Response:** 200 OK with the created question details.
+
 ### Add Options to a Question
 
 - **Endpoint:** `/questions/:id/options/create`
 - **Method:** POST
 - **Description:** Add options to an existing question.
-- **Request Parameters:**
-  - `id` (required): ID of the question.
-- **Request Body:**
-  ```json
-  {
-    "text": "Java"
-  }
-**Response:**
+- **Request Parameters:** `id` (question ID)
+- **Request Body:** JSON object containing the option text.
+- **Response:** 200 OK with the added option details.
 
-- **Status:** 200 OK
-- **Body:**
-  ```json
-  {
-    "message": "Option added successfully",
-    "option": {
-      "id": "987",
-      "text": "Java",
-      "votes": 0
-    }
-  }
+### Delete a Question
+
+- **Endpoint:** `/questions/:id/delete`
+- **Method:** DELETE
+- **Description:** Delete a question.
+- **Request Parameters:** `id` (question ID)
+- **Response:** 200 OK with a success message.
+
+### Delete an Option
+
+- **Endpoint:** `/options/:id/delete`
+- **Method:** DELETE
+- **Description:** Delete an option.
+- **Request Parameters:** `id` (option ID)
+- **Response:** 200 OK with a success message.
+
+### Vote on an Option
+
+- **Endpoint:** `/questions/:questionId/options/:optionId/add_vote`
+- **Method:** POST
+- **Description:** Vote on an option of a question.
+- **Request Parameters:** `questionId` (question ID), `optionId` (option ID)
+- **Response:** 200 OK with a success message.
+
+### View a Question
+
+- **Endpoint:** `/questions/:id`
+- **Method:** GET
+- **Description:** View a question and its options.
+- **Request Parameters:** `id` (question ID)
+- **Response:** 200 OK with the question details.
+
 
 ## Contributing
 
