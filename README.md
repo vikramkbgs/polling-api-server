@@ -49,9 +49,9 @@ To get started with the Polling API, follow these steps:
   ```
 - Adjust the values as per your configuration.
 4. Start the server:
-  ```
-  npm start
-  ```
+   ```
+   npm start
+   ```
 # Polling API Documentation
 
 ## Base URL
