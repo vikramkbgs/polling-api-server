@@ -7,7 +7,7 @@ require("dotenv").config();
 app.use(express.json());
 app.use("/", require("./routes"));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const uri = process.env.ATLAS_URI;
 
 app.listen(port, (req, res) => {
