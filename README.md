@@ -38,13 +38,13 @@ To get started with the Polling API, follow these steps:
 2. Install the dependencies:
    ```
    cd polling-api
-    npm install
+   npm install
    ```
 3. Set up the environment variables:
 - Create a `.env` file in the root directory.
 - Define the following variables in the `.env` file:
   ```
-  PORT=3...
+  PORT=3000
   MONGODB_URI=mongodb://....
   ```
 - Adjust the values as per your configuration.
@@ -53,9 +53,83 @@ To get started with the Polling API, follow these steps:
   npm start
   ```
 
-## API Documentation
+# Polling API Documentation
 
-For detailed information about the API endpoints and usage, please refer to the [API Documentation](API_DOCUMENTATION.md).
+The Polling API provides endpoints to create and manage polls.
+
+## Base URL
+
+The base URL for all API endpoints is: `http://localhost:3000`
+
+## Endpoints
+
+### Create a Question
+
+- Endpoint: `/questions/create`
+- Method: POST
+- Description: Create a new question with options.
+- Request Body:
+  ```json
+  {
+    "title": "Which is your favorite programming language?",
+    "options": [
+      {
+        "text": "JavaScript"
+      },
+      {
+        "text": "Python"
+      }
+    ]
+  }
+- Response:
+- Status: 200 OK
+- Body:
+  ```json
+  {
+  "message": "Question created successfully",
+  "question": {
+    "id": "123",
+    "title": "Which is your favorite programming language?",
+    "options": [
+      {
+        "id": "456",
+        "text": "JavaScript",
+        "votes": 0
+      },
+      {
+        "id": "789",
+        "text": "Python",
+        "votes": 0
+      }
+    ]
+  }
+}
+```
+### Add Options to a Question
+
+- **Endpoint:** `/questions/:id/options/create`
+- **Method:** POST
+- **Description:** Add options to an existing question.
+- **Request Parameters:**
+  - `id` (required): ID of the question.
+- **Request Body:**
+  ```json
+  {
+    "text": "Java"
+  }
+**Response:**
+
+- **Status:** 200 OK
+- **Body:**
+  ```json
+  {
+    "message": "Option added successfully",
+    "option": {
+      "id": "987",
+      "text": "Java",
+      "votes": 0
+    }
+  }
 
 ## Contributing
 
