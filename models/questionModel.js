@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const optionSchema = new mongoose.Schema({
   id: {
     type: Number,
-    required: true,
-    unique: true
+    required: true
   },
   text: {
     type: String,
